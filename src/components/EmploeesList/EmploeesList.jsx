@@ -1,6 +1,6 @@
 import EmployeesListItem from "../EmployeesListItem/EmployeesListItem";
 import "./EmployeesList.css";
-const EmployeesList = ({ data, onDelete, onToggleIncrease, onToggleRise }) => {
+const EmployeesList = ({ data, onDelete, onToggleProp }) => {
   // const elements = data.map((item) => {
   //   return <EmployeesListItem {...item} />;
   // });
@@ -14,8 +14,9 @@ const EmployeesList = ({ data, onDelete, onToggleIncrease, onToggleRise }) => {
             key={id}
             {...itemProps}
             onDelete={() => onDelete(id)}
-            onToggleIncrease={() => onToggleIncrease(id)}
-            onToggleRise={() => onToggleRise(id)}
+            onToggleProp={(e) =>
+              onToggleProp(id, e.currentTarget.dataset.toggle)
+            }
           />
         );
       })}

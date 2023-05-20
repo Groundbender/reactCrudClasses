@@ -26,7 +26,10 @@ class EmployeesAddForm extends Component {
       like: false,
       id: this.props.data.length + 1,
     };
-    this.props.addItem(newItem);
+
+    if (this.state.name.length > 3 && this.state.salary.length !== "") {
+      this.props.addItem(newItem);
+    }
 
     this.setState({
       name: "",
