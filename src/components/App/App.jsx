@@ -17,18 +17,21 @@ class App extends Component {
           name: "John",
           salary: 800,
           increase: false,
+          like: false,
           id: 1,
         },
         {
           name: "Alex",
           salary: 3000,
           increase: true,
+          like: false,
           id: 2,
         },
         {
           name: "Carl",
           salary: 15000,
           increase: false,
+          like: false,
           id: 3,
         },
       ],
@@ -57,16 +60,57 @@ class App extends Component {
     });
   };
 
+  onToggleIncrease = (id) => {
+    // this.setState(({ data }) => {
+    //   const index = data.findIndex((elem) => elem.id === id);
+    //   const oldItem = data[index];
+    //   const newItem = { ...oldItem, increase: !oldItem.increase };
+    //   const newData = [
+    //     ...data.slice(0, index),
+    //     newItem,
+    //     ...data.slice(index + 1),
+    //   ];
+    //   return {
+    //     data: newData,
+    //   };
+    // });
+
+    this.setState(({ data }) => ({
+      data: data.map((item) => {
+        if (item.id === id) {
+          return { ...item, increase: !item.increase };
+        }
+        return item;
+      }),
+    }));
+  };
+
+  onToggleRise = (id) => {
+    this.setState(({ data }) => ({
+      data: data.map((item) => {
+        if (id === item.id) {
+          return { ...item, like: !item.like };
+        }
+        return item;
+      }),
+    }));
+  };
+
   render() {
     const { data } = this.state;
     return (
       <div className="app">
-        <AppInfo />
+        <AppInfo data={data} />
         <div className="search-panel">
           <SearchPanel />
           <AppFilter />
         </div>
-        <EmployeesList data={data} onDelete={this.deleteItem} />
+        <EmployeesList
+          data={data}
+          onDelete={this.deleteItem}
+          onToggleIncrease={this.onToggleIncrease}
+          onToggleRise={this.onToggleRise}
+        />
 
         <EmployeesAddForm data={data} addItem={this.addItem} />
       </div>

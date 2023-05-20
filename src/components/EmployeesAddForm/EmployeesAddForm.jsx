@@ -22,6 +22,8 @@ class EmployeesAddForm extends Component {
     const newItem = {
       name: this.state.name,
       salary: this.state.salary,
+      increase: false,
+      like: false,
       id: this.props.data.length + 1,
     };
     this.props.addItem(newItem);
