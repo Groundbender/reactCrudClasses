@@ -7,7 +7,7 @@ class EmployeesAddForm extends Component {
 
     this.state = {
       name: "",
-      salary: null,
+      salary: "",
     };
   }
 
@@ -17,12 +17,27 @@ class EmployeesAddForm extends Component {
     });
   };
 
+  createItem = (e) => {
+    e.preventDefault();
+    const newItem = {
+      name: this.state.name,
+      salary: this.state.salary,
+      id: this.props.data.length + 1,
+    };
+    this.props.addItem(newItem);
+
+    this.setState({
+      name: "",
+      salary: "",
+    });
+  };
+
   render() {
     const { name, salary } = this.state;
     return (
       <div className="app-add-form">
         <h3>Добавьте нового сотрудника</h3>
-        <form className="add-form d-flex">
+        <form onSubmit={this.createItem} className="add-form d-flex">
           <input
             type="text"
             className="form-control new-post-label"
