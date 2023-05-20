@@ -29,9 +29,7 @@ class EmployeesListItem extends Component {
     let classNames = increase
       ? "list-group-item d-flex justify-content-between " + "increase"
       : "list-group-item d-flex justify-content-between ";
-    // let liked = like
-    //   ? "list-group-item d-flex justify-content-between " + "like"
-    //   : "list-group-item d-flex justify-content-between ";
+
     classNames = like ? classNames + " like" : classNames;
 
     return (
