@@ -1,34 +1,8 @@
 import "./EmployeesListItem.css";
 
 const EmployeesListItem = (props) => {
-  // constructor(props) {
-  //   super(props);
-
-  //   this.state = {
-  //     increase: false,
-  //     like: false,
-  //   };
-  // }
-
-  // onIncrease = () => {
-  //   this.setState(({ increase }) => ({
-  //     increase: !increase,
-  //   }));
-  // };
-
-  // setLike = () => {
-  //   this.setState(({ like }) => ({
-  //     like: !like,
-  //   }));
-  // };
-
   const { name, salary, onDelete, onToggleProp, increase, like } = props;
-  // const { increase, like } = this.state;
-  // let classNames = increase
-  //   ? "list-group-item d-flex justify-content-between " + "increase"
-  //   : "list-group-item d-flex justify-content-between ";
 
-  // classNames = like ? classNames + " like" : classNames;
   let classNames = "list-group-item d-flex justify-content-between";
   if (increase) {
     classNames += " increase";

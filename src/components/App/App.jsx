@@ -77,16 +77,6 @@ class App extends Component {
     });
   };
 
-  // onToggleRise = (id) => {
-  //   this.setState(({ data }) => ({
-  //     data: data.map((item) => {
-  //       if (id === item.id) {
-  //         return { ...item, like: !item.like };
-  //       }
-  //       return item;
-  //     }),
-  //   }));
-  // };
   onUpdateSearch = (term) => {
     this.setState({
       term, // {term: term}
@@ -121,11 +111,24 @@ class App extends Component {
           <SearchPanel onUpdateSearch={this.onUpdateSearch} />
           <AppFilter filter={filter} onFilterSelect={this.onFilterSelect} />
         </div>
-        <EmployeesList
-          data={visibleData}
-          onDelete={this.deleteItem}
-          onToggleProp={this.onToggleProp}
-        />
+        {visibleData.length !== 0 ? (
+          <EmployeesList
+            data={visibleData}
+            onDelete={this.deleteItem}
+            onToggleProp={this.onToggleProp}
+          />
+        ) : (
+          <h1
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              marginTop: "20px",
+            }}
+          >
+            Сотрудники не найдены...
+          </h1>
+        )}
 
         <EmployeesAddForm data={data} addItem={this.addItem} />
       </div>
